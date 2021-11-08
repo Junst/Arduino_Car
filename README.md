@@ -13,32 +13,45 @@
 
 
 ## 3. Project Specification
+### 3-1. Hardware
+#### 회로도
+
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/7%20linetracer_bb.png)
 
 #### 아두이노 UNO 보드
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/%EA%B7%B8%EB%A6%BC1.jpg)
+
 물리적인 세계를 감지하고 제어할 수 있는 인터랙티브 객체들과 디지털 장치를 만들기 위한 도구이다. 컴퓨터에 입력된 코드를 아두이노 UNO 보드에 입력시켜 보드에 저장을 시킨 다음 주어진 코드대로 모터 드라이버가 실행하도록 하였다.
 
-#### 모터 드라이버
-작은 전압을 제어하여 모터의 속도를 제어하고 모터의 방향을 바꿀 수 있는 회로장치이다. 모터 드라이버를 모터와 아두이노 보드, 건전지에 연결하여 전력을 공급하며 주어진 코드를 실행할 수 있도록 하였다.
-
 #### 브레드 보드
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/%EA%B7%B8%EB%A6%BC3.jpg)
+
 납땜 없이 단지 구멍에 부품 혹은 선을 꽂기만 서로가 연결되니 유용하게 사용할 수 있는 제품이다. 같은 줄에 부품들을 꽂으면 서로 연결되어 전기가 통하게 되지만 다른 줄에 꽂으면 전기가 흐르지 않는다. 따라서 저희는 이러한 부분을 개선하기 위해 여러 줄을 철사로 연결하여 전기가 흐르도록 하였다
 
 #### 모터 드라이버 (L298N)
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/%EA%B7%B8%EB%A6%BC4.jpg)
+
 Arduino를 보조해주는 역할을 수행한다. 모터는 보통 Arduino와 같은 마이크로 컨트롤러가 허용하는 전류보다 전류를 많이 사용하기 때문에 추가적인 회로가 필요한데, 그 역할을 하는 것이 모터 드라이버이다. 
 
 #### DC 모터
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/%EA%B7%B8%EB%A6%BC5.jpg)
+
 2개의 단자가 있으며, 단자에 +, -극을 연결하여 전원을 입력하면 모터가 작동한다. DC모터는 극이 없으며, 전원을 반대로 연결한 경우에는 반대로 회전하는 성질을 갖는다. 또한 입력되는 전원(전압)의 크기에 따라 회전수와 힘이 조절된다. 이때 전원과 회전 수 및 힘은 비례한다.
 
 
 #### 적외선 센서 
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/%EA%B7%B8%EB%A6%BC6.png) ![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/%EA%B7%B8%EB%A6%BC7.png)
+
 라인 트레이서가 라인을 따라가는 원리는 검은색은 빛을 흡수하고 흰색은 빛을 반사하는 원리를 통해 적외선 센서를 이용하여 감지하게 되는 것이다. 이 때 라인트레이서 가운데에 있는 센서의 감도를 조절하여 라인을 쉽게 감지할 수 있도록 해주는 것이 중요하다.
 
-8가지 경우의 수	센서의 감지상태 
-1(라인이 없다)	0 0 0
-2(우회전)	0 0 1
-3(직진)	0 1 0
-4	0 1 1
-5(좌회전)	1 0 0
-6	1 0 1
-7	1 1 0
-8	1 1 1
+### 3-2. Sofrware
+#### Arduino IDE(Sketch)
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/ard.png)
+
+아두이노 통합개발환경(Arduino IDE)은 편집기, 컴파일러, 업로더 등이 합쳐진 소프트웨어 환경이다. '아두이노 소프트웨어'라고도 불린다. 이와 더불어 기타 개발에 필요한 각종 옵션 및 라이브러리 관리를 할 수 있다. 아두이노 프로그램 실행 시, 개인용 컴퓨터와 시리얼 통신을 할 수 있는 가상 시리얼모니터를 제공한다. 보통 USB을 통해 업로드를 하므로 아두이노 보드는 USB를 UART 통신으로 바꾸는 방법이 제공되고, MCU가 실행할 때는 이 UART 통신을 이용하여 필요한 통신을 할 수 있다. 이렇게 되려면 아두이노의 MCU는 부트로더가 올라가 있어야 한다. 특히 아두이노 프로그램을 '스케치(Sketch)'라고 부른다.
+
+#### Fritzing
+![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/fri.png)
+
+Fritzing은 전자 하드웨어 설계를 위한 아마추어 또는 비전문가를 위한 EDA CAD 소프트웨어를 개발하고 프로토 타입을 실험하는 것에서부터 제작용 회로를 만드는 것까지 폭넓게 사용할 수 있는 디자이너와 아티스트를 지원하기위한 오픈 소스 프로젝트이다. 포츠담 대학교 응용과학부에서 개발되었다.
+
