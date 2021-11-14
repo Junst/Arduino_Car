@@ -44,7 +44,7 @@ Arduino를 보조해주는 역할을 수행한다. 모터는 보통 Arduino와 �
 
 라인 트레이서가 라인을 따라가는 원리는 검은색은 빛을 흡수하고 흰색은 빛을 반사하는 원리를 통해 적외선 센서를 이용하여 감지하게 되는 것이다. 이 때 라인트레이서 가운데에 있는 센서의 감도를 조절하여 라인을 쉽게 감지할 수 있도록 해주는 것이 중요하다.
 
-### 3-2. Sofrware
+### 3-2. Software
 #### Arduino IDE(Sketch)
 ![alt text](https://github.com/Junst/Arduino_Line_Tracer_Car/blob/master/pic/ard.png)
 
